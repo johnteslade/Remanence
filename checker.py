@@ -1,42 +1,56 @@
 
 
-def find_match(find_in, offset, search_data):
+def find_match(find_in, find_in_offset, search_data, search_data_offset):
 	
 	matched_bytes = 0
-	
-	for search_byte in search_data:
-		if offset + matched_bytes >= len(find_in):
-			break
-		elif find_in[offset + matched_bytes] == search_byte:
+
+	#for search_data_offset in range(0, len(search_data) - 1):
+
+	for i in range(find_in_offset, min(len(find_in), find_in_offset + len(search_data) - search_data_offset)):
+
+		if find_in[i] == search_data[search_data_offset + matched_bytes]:
 			matched_bytes = matched_bytes + 1
 		else:
 			break
-	
+#	if matched_bytes > 0:
+#		break
+
 	return matched_bytes
 
-fh = open('core.3381', 'rb')
+def find_byte_string(byte_string, search_byte_string):
+	
+	THRESHOLD = 2
 
-#ba = bytearray(fh.read())
-ba = bytearray(b'\x00\x11\x12\x13\x22\x11\x12\x22\x22\x12\x13')
+	print "--- SEARCH start ---"
 
-i = 0
+	for i in range(0, len(byte_string)):
 
-search_text = bytearray(b'\x11\x12\x13')
+		for j in range(0, len(search_byte_string) - THRESHOLD + 1):
+			
+			matched_bytes = find_match(byte_string, i, search_byte_string, j) 
 
-search_text_pos = 0
-
-THRESHOLD = 2
-
-# Loop once over bytes - keep list of object showing current search positions
-
-for i in range(0, len(ba)):
-
-	matched_bytes = find_match(ba, i, search_text) 
-
-	if matched_bytes >= THRESHOLD:
-		print "search from %d, matched %d" % (i, matched_bytes)
+			if matched_bytes >= THRESHOLD:
+				print "search from %d, matched %d chars, search offset %d" % (i, matched_bytes, j)
 
 	
+	print "Search done"
+	print "-------------"
+
+def main():
+
+	fh = open('core.3381', 'rb')
+
+	ba = bytearray(fh.read())
+	#ba = bytearray(b'\x00\x11\x12\x13\x22\x11\x12\x22\x22\x12\x13')
+
+	i = 0
+
+	#search_text = bytearray(b'\x11\x12\x13')
+	#search_text = bytearray(b'\x11\x11\x22\x22')
 
 
+	find_byte_string(ba, bytearray(b'\x11\x11\x22\x22'))
+	find_byte_string(ba, bytearray(b'\xaa\xaa\xaa\xaa\xbb\xbb\xbb\xbb'))
+
+main()
 
