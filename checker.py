@@ -19,15 +19,21 @@ def find_byte_string(byte_string, search_byte_string):
 
 	print "--- SEARCH start ---"
 
-	for i in range(0, len(byte_string)):
+	i = 0
+
+	while i < len(byte_string):
 
 		for j in range(0, len(search_byte_string) - THRESHOLD + 1):
 			
 			matched_bytes = find_match(byte_string, i, search_byte_string, j) 
 
+			# Find a match and then jump over found bytes
 			if matched_bytes >= THRESHOLD:
 				print "search from %d, matched %d chars, search offset %d" % (i, matched_bytes, j)
+				i = i + matched_bytes
 
+
+		i = i + 1
 	
 	print "Search done"
 	print "-------------"
