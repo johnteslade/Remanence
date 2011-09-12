@@ -1,4 +1,4 @@
-
+import clean_zeros
 
 def find_match(find_in, find_in_offset, search_data, search_data_offset):
 	
@@ -43,14 +43,17 @@ def main():
 	ba = bytearray(fh.read())
 	#ba = bytearray(b'\x00\x11\x12\x13\x22\x11\x12\x22\x22\x12\x13')
 
+	# Strip runs of zeros
+	ba_2 = clean_zeros.strip_byte_runs(ba, 0, 4)
+	print "orig = %d, stripped = %d" % (len(ba), len(ba_2))
+
 	i = 0
 
 	#search_text = bytearray(b'\x11\x12\x13')
 	#search_text = bytearray(b'\x11\x11\x22\x22')
 
-
-	find_byte_string(ba, bytearray(b'\x11\x11\x22\x22'))
-	find_byte_string(ba, bytearray(b'\xaa\xaa\xaa\xaa\xbb\xbb\xbb\xbb'))
+	find_byte_string(ba_2, bytearray(b'\x11\x11\x22\x22'))
+	find_byte_string(ba_2, bytearray(b'\xaa\xaa\xaa\xaa\xbb\xbb\xbb\xbb'))
 
 main()
 
