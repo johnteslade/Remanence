@@ -1,0 +1,5 @@
+*.o
+.sconsign.dblite
+.*.sw*
+*.pyc
+tags
