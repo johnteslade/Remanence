@@ -1,4 +1,5 @@
 import clean_zeros
+import pprint
 
 def find_match(find_in, find_in_offset, search_data, search_data_offset):
 	
@@ -19,6 +20,8 @@ def find_byte_string(byte_string, search_byte_string):
 
 	print "--- SEARCH start ---"
 
+	pprint.pprint(search_byte_string)
+	
 	i = 0
 
 	while i < len(byte_string):
