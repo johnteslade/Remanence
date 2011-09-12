@@ -1,0 +1,24 @@
+Use objdump to look at structure of core dump. Can this identify sections of heap and stack? Can it further be narrowed to area?
+
+Design possible search methods for data.
+Straight search
+Partial search
+find in int 32 and 64 - consider endian
+Patterns in a int array - eg low byte of every 4 bytes
+
+Take diff dumps
+
+Identify exact location of leak
+
+First stages :
+
+Write a sample broken program - do full string and partial string searches, stack and heap.
+
+define red search strings
+
+Find data within core dump - just as raw data
+
+Create full test suite of example broken programs
+
+Define program name + put on Google code or github 
+
