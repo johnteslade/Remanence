@@ -4,16 +4,12 @@ def find_match(find_in, find_in_offset, search_data, search_data_offset):
 	
 	matched_bytes = 0
 
-	#for search_data_offset in range(0, len(search_data) - 1):
-
 	for i in range(find_in_offset, min(len(find_in), find_in_offset + len(search_data) - search_data_offset)):
 
 		if find_in[i] == search_data[search_data_offset + matched_bytes]:
 			matched_bytes = matched_bytes + 1
 		else:
 			break
-#	if matched_bytes > 0:
-#		break
 
 	return matched_bytes
 
