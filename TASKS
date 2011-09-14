@@ -22,3 +22,8 @@ Create full test suite of example broken programs
 
 Define program name + put on Google code or github 
 
+Investigate:
+- Objdump section output.  Use zero strip on sections
+- Java core dump? Answer SO question.  Core dump with http://stackoverflow.com/questions/337793/can-i-force-generation-of-a-jvm-crash-log-file
+
+
