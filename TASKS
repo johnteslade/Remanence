@@ -12,15 +12,16 @@ Identify exact location of leak
 
 First stages :
 
-Write a sample broken program - do full string and partial string searches, stack and heap.
-
-define red search strings
-
-Find data within core dump - just as raw data
-
 Create full test suite of example broken programs
 
+Use scons to create core dumps for test suite
+
+Add command line interface to python script
+
 Define program name + put on Google code or github 
+
+
+
 
 Investigate:
 - Objdump section output.  Use zero strip on sections
